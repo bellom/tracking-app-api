@@ -695,3 +695,51 @@ Processing by Api::V1::UsersController#index as HTML
 Completed 200 OK in 41ms (Views: 4.5ms | ActiveRecord: 27.2ms | Allocations: 3140)
 
 
+Started GET "/api/v1/users" for ::1 at 2021-10-07 20:19:29 +0100
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::UsersController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/api/v1/users_controller.rb:9:in `index'
+Completed 200 OK in 15ms (Views: 1.7ms | ActiveRecord: 0.6ms | Allocations: 5256)
+
+
+Started POST "/api/v1/users" for ::1 at 2021-10-07 20:19:57 +0100
+Processing by Api::V1::UsersController#create as */*
+  Parameters: {"user"=>{"username"=>"bellom2", "password"=>"[FILTERED]"}}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/users_controller.rb:17:in `create'
+  [1m[36mUser Exists? (12.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "bellom2"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:17:in `create'
+  [1m[36mUser Create (54.2ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "bellom2"], ["password_digest", "$2a$12$40.yEwYXetSgk7QJa6i3.u/FI59DpJOxpXqBBj/HMDM39wlwnDmrS"], ["created_at", "2021-10-07 19:19:58.375537"], ["updated_at", "2021-10-07 19:19:58.375537"]]
+  ↳ app/controllers/api/v1/users_controller.rb:17:in `create'
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/users_controller.rb:17:in `create'
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["username", "bellom2"], ["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:19:in `create'
+Completed 201 Created in 482ms (Views: 0.3ms | ActiveRecord: 170.9ms | Allocations: 7769)
+
+
+Started GET "/api/v1/users" for ::1 at 2021-10-07 20:20:02 +0100
+Processing by Api::V1::UsersController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/api/v1/users_controller.rb:9:in `index'
+Completed 200 OK in 3ms (Views: 2.2ms | ActiveRecord: 0.2ms | Allocations: 753)
+
+
+Started POST "/api/v1/users" for ::1 at 2021-10-07 20:27:09 +0100
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::UsersController#create as */*
+  Parameters: {"user"=>{"username"=>"bellom1", "password"=>"[FILTERED]"}}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/users_controller.rb:17:in `create'
+  [1m[36mUser Exists? (7.8ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "bellom1"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:17:in `create'
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "bellom1"], ["password_digest", "$2a$12$ymwtkf9D.eEe..C4hVhBnu6CiaLVzEwh8LC658C8G8zXIW9aOdy6a"], ["created_at", "2021-10-07 19:27:09.633564"], ["updated_at", "2021-10-07 19:27:09.633564"]]
+  ↳ app/controllers/api/v1/users_controller.rb:17:in `create'
+  [1m[36mTRANSACTION (6.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/users_controller.rb:17:in `create'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["username", "bellom1"], ["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:19:in `create'
+Completed 201 Created in 331ms (Views: 0.3ms | ActiveRecord: 22.1ms | Allocations: 10880)
+
+
