@@ -7,7 +7,8 @@ module Api
         if @user
           render json: {logged_in: true, user: user_data(@user)}
         else
-          render json: {error: 'Please provide correct username and password'}, status 401
+          # render json: {error: 'Please provide correct username and password'}, status 401
+          render json: {error: 'Please provide correct username and password'}
         end
       end
 
